@@ -1,7 +1,7 @@
 package Vista;
+import Modelo.LecturaCsv;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 public class Aplicacion extends Application {
@@ -10,10 +10,12 @@ public class Aplicacion extends Application {
  }
  @Override
  public void start(Stage stage) throws Exception {
- stage.setTitle("Mi primera ventana");
- StackPane layout = new StackPane();
- Scene scene = new Scene(layout,800,600);
- stage.setScene(scene);
- stage.show();
+	 LecturaCsv hola=new LecturaCsv();
+	 hola.leerCsv("C:\\Users\\RetailAdmin\\eclipse-workspace\\Comedor\\src\\Vista\\productos.csv",true);
+	 stage.setTitle("Mi primera ventana");
+	 StackPane layout = new StackPane();
+	 Scene scene = new Scene(layout,800,600);
+	 stage.setScene(scene);
+	 stage.show();
  }
 }
