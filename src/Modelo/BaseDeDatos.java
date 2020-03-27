@@ -21,16 +21,11 @@ public class BaseDeDatos {
 		this.coleccion = this.bdCliente.getCollection("empleados");
 	}
 	
-	public void usuarioCorrecto(String nombre,int contrasena) {
-		
+	public boolean usuarioCorrecto(String nombre,int contrasena) {
 		Document filterDoc = new Document();
-
-		filterDoc.put("nombre", "andre");
-
+		filterDoc.put("nombre", nombre);
 		filterDoc.append("contrasena", contrasena);
-
-		Iterator<Document> iter = this.coleccion.find(filterDoc).iterator(); 
-		System.out.println(iter.hasNext());
-		
+		Iterator<Document> iter = this.coleccion.find(filterDoc).iterator();
+		return iter.hasNext();
 	}
 }

@@ -1,5 +1,7 @@
 package Vista;
 
+import Controlador.InicioControlador;
+import Modelo.BaseDeDatos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -14,12 +16,11 @@ import javafx.stage.Stage;
 public class ContenedorInicio extends BorderPane{
 	private Stage stage;
 	
-	public ContenedorInicio (Stage stage) {
+	public ContenedorInicio (Stage stage,BaseDeDatos b) {
 		this.stage=stage;
-		this.cargarBotones();
+		this.cargarBotones(b);
 	}
-	
-	public void cargarBotones() {
+	public void cargarBotones(BaseDeDatos b) {
 		VBox datosUsuario = new VBox();
 		HBox botonesInicioRegistro=new HBox();
 		datosUsuario.setPadding(new Insets(100));
@@ -28,10 +29,12 @@ public class ContenedorInicio extends BorderPane{
 		TextField usuario= new TextField();
 		PasswordField contrasena= new PasswordField();
 		usuario.setPromptText("Nombre de Usuario");
+		Label estado = new Label();
 		contrasena.setPromptText("Contraseña");
 		Button ingresar= new Button("Ingresar");
 		Button registro=new Button("Registrarse");
-		Label estado = new Label();
+		InicioControlador controlInicio = new InicioControlador(usuario,contrasena,estado,b);
+		ingresar.setOnAction(controlInicio);
 		botonesInicioRegistro.setAlignment(Pos.CENTER);
 		botonesInicioRegistro.getChildren().addAll(ingresar,registro);
 		datosUsuario.setAlignment(Pos.CENTER);
