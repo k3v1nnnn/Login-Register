@@ -21,6 +21,10 @@ public class InicioControlador implements EventHandler<ActionEvent> {
 	}
 	@Override
 	public void handle(ActionEvent arg0) {
+		if(this.usuario.getText().isEmpty()||this.contrasena.getText().isEmpty()) {
+			this.estado.setText("Ingrese usuario y/o contraseña");
+			 this.estado.setTextFill(Color.web("red"));
+		}else {
 		 if(baseDatos.usuarioCorrecto(this.usuario.getText(),Integer.parseInt(this.contrasena.getText()))) {
 			 this.estado.setText("Ingreso Correctamente");
 			 this.estado.setTextFill(Color.web("green"));
@@ -30,6 +34,6 @@ public class InicioControlador implements EventHandler<ActionEvent> {
 		 }
 		 this.usuario.clear();
 		 this.contrasena.clear();
-	}
-
+		 }
+		}
 }

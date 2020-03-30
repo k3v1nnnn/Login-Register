@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.InicioControlador;
+import Controlador.RegistroControlador;
 import Modelo.BaseDeDatos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -35,6 +36,8 @@ public class ContenedorInicio extends BorderPane{
 		Button registro=new Button("Registrarse");
 		InicioControlador controlInicio = new InicioControlador(usuario,contrasena,estado,b);
 		ingresar.setOnAction(controlInicio);
+		RegistroControlador controlRegistro=new RegistroControlador(this,this.stage);
+		registro.setOnAction(controlRegistro);
 		botonesInicioRegistro.setAlignment(Pos.CENTER);
 		botonesInicioRegistro.getChildren().addAll(ingresar,registro);
 		datosUsuario.setAlignment(Pos.CENTER);

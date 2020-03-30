@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.GuardarControlador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,13 +12,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorRegistro extends BorderPane{
-	private Stage stage;
 	
-	public ContenedorRegistro(Stage stage) {
-		this.stage=stage;
-		this.cargarBotones();
+	public ContenedorRegistro(ContenedorInicio inicio,Stage stage) {
+		this.cargarBotones(inicio,stage);
 	}
-	public void cargarBotones() {
+	public void cargarBotones(ContenedorInicio inicio,Stage stage) {
 		VBox datosNuevoUsuario = new VBox();
 		datosNuevoUsuario.setPadding(new Insets(100));
 		datosNuevoUsuario.setSpacing(10);
@@ -33,6 +32,8 @@ public class ContenedorRegistro extends BorderPane{
 		TextField tPais = new TextField();
 		Label estado = new Label(); 
 		Button guardar = new Button("Guardar");
+		GuardarControlador controlGuardar=new GuardarControlador(tNombre,tContrasena,tRepContrasena,tEdad,tPais,inicio,stage);
+		guardar.setOnAction(controlGuardar);
 		datosNuevoUsuario.getChildren().addAll(nombre,tNombre,contrasena,tContrasena,
 				repContrasena,tRepContrasena,edad,tEdad,pais,tPais,estado,guardar);
 		this.setCenter(datosNuevoUsuario);
