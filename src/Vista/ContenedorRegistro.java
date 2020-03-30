@@ -1,22 +1,21 @@
 package Vista;
 
 import Controlador.GuardarControlador;
+import Modelo.BaseDeDatos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorRegistro extends BorderPane{
 	
-	public ContenedorRegistro(ContenedorInicio inicio,Stage stage) {
-		this.cargarBotones(inicio,stage);
+	public ContenedorRegistro(ContenedorInicio inicio,Stage stage,BaseDeDatos bdEmpleados) {
+		this.cargarBotones(inicio,stage,bdEmpleados);
 	}
-	public void cargarBotones(ContenedorInicio inicio,Stage stage) {
+	public void cargarBotones(ContenedorInicio inicio,Stage stage,BaseDeDatos bdEmpleados) {
 		VBox datosNuevoUsuario = new VBox();
 		datosNuevoUsuario.setPadding(new Insets(100));
 		datosNuevoUsuario.setSpacing(10);
@@ -32,7 +31,7 @@ public class ContenedorRegistro extends BorderPane{
 		TextField tPais = new TextField();
 		Label estado = new Label(); 
 		Button guardar = new Button("Guardar");
-		GuardarControlador controlGuardar=new GuardarControlador(tNombre,tContrasena,tRepContrasena,tEdad,tPais,inicio,stage);
+		GuardarControlador controlGuardar=new GuardarControlador(tNombre,tContrasena,tRepContrasena,tEdad,tPais,estado,inicio,stage,bdEmpleados);
 		guardar.setOnAction(controlGuardar);
 		datosNuevoUsuario.getChildren().addAll(nombre,tNombre,contrasena,tContrasena,
 				repContrasena,tRepContrasena,edad,tEdad,pais,tPais,estado,guardar);

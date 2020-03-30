@@ -15,13 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorInicio extends BorderPane{
-	private Stage stage;
 	
-	public ContenedorInicio (Stage stage,BaseDeDatos b) {
-		this.stage=stage;
-		this.cargarBotones(b);
+	public ContenedorInicio (Stage stage,BaseDeDatos bdEmpleados) {
+		this.cargarBotones(stage,bdEmpleados);
 	}
-	public void cargarBotones(BaseDeDatos b) {
+	public void cargarBotones(Stage stage,BaseDeDatos bdEmpleados) {
 		VBox datosUsuario = new VBox();
 		HBox botonesInicioRegistro=new HBox();
 		datosUsuario.setPadding(new Insets(100));
@@ -34,9 +32,9 @@ public class ContenedorInicio extends BorderPane{
 		contrasena.setPromptText("Contraseña");
 		Button ingresar= new Button("Ingresar");
 		Button registro=new Button("Registrarse");
-		InicioControlador controlInicio = new InicioControlador(usuario,contrasena,estado,b);
+		InicioControlador controlInicio = new InicioControlador(usuario,contrasena,estado,bdEmpleados);
 		ingresar.setOnAction(controlInicio);
-		RegistroControlador controlRegistro=new RegistroControlador(this,this.stage);
+		RegistroControlador controlRegistro=new RegistroControlador(this,stage,bdEmpleados);
 		registro.setOnAction(controlRegistro);
 		botonesInicioRegistro.setAlignment(Pos.CENTER);
 		botonesInicioRegistro.getChildren().addAll(ingresar,registro);

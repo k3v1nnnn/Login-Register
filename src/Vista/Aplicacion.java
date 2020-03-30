@@ -12,13 +12,10 @@ public class Aplicacion extends Application {
  }
  @Override
  public void start(Stage stage) throws Exception {
-	 BaseDeDatos b=new BaseDeDatos();
-	 //b.usuarioCorrecto("kevin", 1234);
-	 ContenedorInicio contenedorInicio = new ContenedorInicio(stage,b);
-	 //ContenedorRegistro contenedorRegis=new ContenedorRegistro(stage);
+	 BaseDeDatos bdEmpleados=new BaseDeDatos();
+	 ContenedorInicio contenedorInicio = new ContenedorInicio(stage,bdEmpleados);
 	 stage.setTitle("Inicio");
 	 Scene scene = new Scene(contenedorInicio,800,600);
-	 //Scene scene = new Scene(contenedorRegis,800,600);
 	 stage.setScene(scene);
 	 stage.show();
  }

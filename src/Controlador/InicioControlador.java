@@ -13,7 +13,8 @@ public class InicioControlador implements EventHandler<ActionEvent> {
 	private PasswordField contrasena;
 	private Label estado;
 	private BaseDeDatos baseDatos;
-	public InicioControlador(TextField usuario,PasswordField contrasena,Label estado,BaseDeDatos baseDatos) {
+	public InicioControlador(TextField usuario,PasswordField contrasena,
+			Label estado,BaseDeDatos baseDatos) {
 		this.usuario=usuario;
 		this.contrasena=contrasena;
 		this.estado=estado;
@@ -25,7 +26,7 @@ public class InicioControlador implements EventHandler<ActionEvent> {
 			this.estado.setText("Ingrese usuario y/o contraseña");
 			 this.estado.setTextFill(Color.web("red"));
 		}else {
-		 if(baseDatos.usuarioCorrecto(this.usuario.getText(),Integer.parseInt(this.contrasena.getText()))) {
+		 if(baseDatos.usuarioCorrecto(this.usuario.getText(),this.contrasena.getText())) {
 			 this.estado.setText("Ingreso Correctamente");
 			 this.estado.setTextFill(Color.web("green"));
 		 }else {
